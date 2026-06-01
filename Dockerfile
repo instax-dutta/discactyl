@@ -18,7 +18,7 @@ RUN npm ci --only=production
 
 COPY --from=builder /app/dist/ ./dist/
 
-RUN mkdir -p /app/data
+RUN mkdir -p /home/container/data
 
 ENV NODE_ENV=production
 
