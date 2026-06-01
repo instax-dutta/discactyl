@@ -1,0 +1,152 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2026-06-01T00:00:00+00:00",
+    "name": "Discactyl",
+    "author": "instax-dutta@github",
+    "description": "Discord bot for Pterodactyl Panel control. Built from ghcr.io/instax-dutta/discactyl — update the image tag to pull the latest release.",
+    "features": null,
+    "docker_images": {
+        "ghcr.io/instax-dutta/discactyl:latest": "ghcr.io/instax-dutta/discactyl:latest"
+    },
+    "file_denylist": [],
+    "startup": "node dist/index.js",
+    "config": {
+        "files": "{}",
+        "startup": "{\"done\": \"Bot is ready\"}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!/bin/ash\nset -e\nmkdir -p /mnt/server/data\necho 'Discactyl installation complete. Configure environment variables before starting.'",
+            "container": "alpine:3.19",
+            "entrypoint": "ash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Discord Bot Token",
+            "description": "Bot token from discord.com/developers/applications",
+            "env_variable": "DISCORD_TOKEN",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "Discord Client ID",
+            "description": "Application ID from discord.com/developers/applications",
+            "env_variable": "DISCORD_CLIENT_ID",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "Discord Guild ID",
+            "description": "Server ID for guild-scoped slash command registration (leave empty for global)",
+            "env_variable": "DISCORD_GUILD_ID",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string",
+            "field_type": "text"
+        },
+        {
+            "name": "Pterodactyl Panel URL",
+            "description": "Full URL to your Pterodactyl panel (e.g. https://panel.example.com)",
+            "env_variable": "PTERODACTYL_URL",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|url",
+            "field_type": "text"
+        },
+        {
+            "name": "Pterodactyl Application Key",
+            "description": "Application API key starting with ptla_",
+            "env_variable": "PTERODACTYL_APPLICATION_KEY",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|starts_with:ptla_",
+            "field_type": "text"
+        },
+        {
+            "name": "Pterodactyl Client Key",
+            "description": "Client API key starting with ptlc_",
+            "env_variable": "PTERODACTYL_CLIENT_KEY",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|starts_with:ptlc_",
+            "field_type": "text"
+        },
+        {
+            "name": "Encryption Secret",
+            "description": "32+ character random string used to encrypt stored API keys",
+            "env_variable": "API_KEY_ENCRYPTION_SECRET",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|min:32",
+            "field_type": "text"
+        },
+        {
+            "name": "Database Path",
+            "description": "Path to the SQLite database file",
+            "env_variable": "DATABASE_PATH",
+            "default_value": "./data/discactyl.db",
+            "user_viewable": true,
+            "user_editable": false,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "Log Level",
+            "description": "Pino log level: trace, debug, info, warn, error",
+            "env_variable": "LOG_LEVEL",
+            "default_value": "info",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:trace,debug,info,warn,error",
+            "field_type": "text"
+        },
+        {
+            "name": "Server Cache TTL (seconds)",
+            "description": "How long to cache server list responses",
+            "env_variable": "CACHE_TTL_SERVERS",
+            "default_value": "30",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|min:5",
+            "field_type": "text"
+        },
+        {
+            "name": "Node Cache TTL (seconds)",
+            "description": "How long to cache node list responses",
+            "env_variable": "CACHE_TTL_NODES",
+            "default_value": "60",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|min:5",
+            "field_type": "text"
+        },
+        {
+            "name": "Guild Config Cache TTL (seconds)",
+            "description": "How long to cache guild configuration",
+            "env_variable": "CACHE_TTL_GUILD_CONFIG",
+            "default_value": "60",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|min:5",
+            "field_type": "text"
+        }
+    ]
+}
