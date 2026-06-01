@@ -1,0 +1,16 @@
+node_modules/
+dist/
+data/
+.env
+*.log
+*.tsbuildinfo
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DBTemp
+coverage/
+.eslintcache
