@@ -17,6 +17,7 @@ COPY package*.json ./
 RUN npm ci --only=production
 
 COPY --from=builder /app/dist/ ./dist/
+COPY src/lib/db/migrations/ ./dist/lib/db/migrations/
 
 RUN mkdir -p /home/container/data
 
